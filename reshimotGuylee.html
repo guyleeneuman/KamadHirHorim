@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>רשימות קמ"ד- גיא-לי</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <img class="navbar" src="assets/elements/logos.png" alt="icon 1">
+    <img class="title" src="assets/titles/inviteTitle.png" alt="icon 1">
+
+
+<div class="searchBox">
+  <input id="searchInput" class="searchInput" placeholder="חיפוש לפי שם החיילת">
+
+  <svg id="searchBtn" xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 -960 960 960">
+    <path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56Z"/>
+  </svg>
+
+</div>
+<div id="ordersContainer"></div>
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+import {
+    getDatabase,
+    ref,
+    get
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-database.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCEEpVNL80542ub1E-5GPh6mHp5gqqmIzc",
+  authDomain: "kamadhir-d9679.firebaseapp.com",
+  databaseURL: "https://kamadhir-d9679-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "kamadhir-d9679",
+  storageBucket: "kamadhir-d9679.firebasestorage.app",
+  messagingSenderId: "27030388884",
+  appId: "1:27030388884:web:800ae468940d68f2e4f481"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+
+const container = document.getElementById("ordersContainer");
+const searchInput = document.getElementById("searchInput");
+const searchBtn = document.getElementById("searchBtn");
+
+let allInvites = [];
+
+async function loadInvites() {
+
+    const snapshot = await get(ref(db, "invites"));
+
+    allInvites = [];
+
+    if (snapshot.exists()) {
+
+        const data = snapshot.val();
+
+        Object.keys(data).forEach(key => {
+            allInvites.push({ id: key, ...data[key] });
+        });
+    }
+
+    render(allInvites);
+}
+
+function render(list) {
+
+    container.innerHTML = "";
+
+    list.forEach(invite => {
+
+        container.innerHTML += `
+          <div class="inviteCard">
+             <div class="deleteBtn" onclick="deleteInvite('${invite.id}')">
+                ✖
+            </div>
+            <div class="topRow">
+                שם אורח: ${invite.inviteName || ""} <br>
+ת"ז: ${invite.inviteId}
+
+            </div>
+           
+
+            <div class="middleRow">
+                שם החניכה: ${invite.soldierName} |
+              כיתה: ${invite.className || ""} 
+              
+            </div>
+            <div class="bottomRow">
+               קרבה: ${invite.relation || ""} |
+              הערות: ${invite.notes || "אין"}
+            </div>
+
+          </div>
+        `;
+    });
+}
+
+
+function doSearch() {
+
+    const value = searchInput.value.toLowerCase();
+
+    const filtered = allInvites.filter(i =>
+        (i.soldierName || "").toLowerCase().includes(value)
+    );
+
+    render(filtered);
+}
+
+searchBtn.addEventListener("click", doSearch);
+
+searchInput.addEventListener("input", doSearch);
+
+loadInvites();
+
+import {
+    remove
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-database.js";
+window.deleteInvite = async function(id) {
+    await remove(ref(db, "invites/" + id));
+    loadInvites(); // רענון הרשימה
+}
+
+</script>
+
+<style>
+    body {
+    margin: 0;
+    min-height: 100vh;
+    background-image: url("assets/background/sandBg.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat:repeat-y;
+    direction: ltr;
+    font-family: "secular";
+}
+   .title{
+    top: 15%;
+   }
+   .forword {
+    cursor: pointer;
+    position: absolute;
+    top: 85%;
+    left: 22%;
+    transform: translateX(-50%);
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    touch-action: manipulation;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.forword:hover {
+    transform: translateX(-50%) scale(1.1);
+    filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.8));
+}
+
+.forword:active {
+    transform: translateX(-50%) scale(0.95);
+}
+</style>
+</body>
+</html>

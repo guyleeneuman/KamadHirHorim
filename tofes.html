@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>טקס קמ"ד חי"ר פרטים</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <img class="navbar" src="assets/elements/logos.png" alt="icon 1">
+    <img class="title" src="assets/titles/personalInfo.png" alt="icon 1">
+<form id="contactForm" class="pillForm">
+
+<input type="text" name="class" placeholder="כיתה">
+
+<input type="text" name="full_name" placeholder="שם מלא החיילת">
+
+<input type="number" name="number_invite" placeholder="תז אורח">
+
+<input type="text" name="invite_name" placeholder="שם מלא אורח">
+
+<textarea name="notes" placeholder="הערות:
+נשק/תו נכה"></textarea>
+
+<textarea name="details" placeholder="קרבה לחיילת:
+אמא/אבא/אחר"></textarea>
+
+<button type="submit" class="submitBtn">
+  <img src="assets/buttons/send.png">
+</button>
+
+</form>
+<div id="overlay"></div>
+
+<div id="successPopup">
+  <img src="assets/elements/popUp.png">
+</div>
+
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
+import {
+    getDatabase,
+    ref,
+    push
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-database.js";
+
+
+const firebaseConfig = {
+
+    apiKey: "AIzaSyCEEpVNL80542ub1E-5GPh6mHp5gqqmIzc",
+
+    authDomain: "kamadhir-d9679.firebaseapp.com",
+
+    databaseURL: "https://kamadhir-d9679-default-rtdb.europe-west1.firebasedatabase.app",
+
+    projectId: "kamadhir-d9679",
+
+    storageBucket: "kamadhir-d9679.firebasestorage.app",
+
+    messagingSenderId: "27030388884",
+
+    appId: "1:27030388884:web:800ae468940d68f2e4f481"
+
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+
+const form = document.getElementById("contactForm");
+
+form.addEventListener("submit", async (e) => {
+
+    e.preventDefault();
+
+    // לוקחים ערכים
+    const className = form.elements["class"].value.trim();
+    const soldierName = form.elements["full_name"].value.trim();
+    const inviteId = form.elements["number_invite"].value.trim();
+    const inviteName = form.elements["invite_name"].value.trim();
+    const notes = form.elements["notes"].value.trim();
+    const relation = form.elements["details"].value.trim();
+
+    // בדיקה אם משהו ריק
+    if (
+        !className ||
+        !soldierName ||
+        !inviteId ||
+        !inviteName ||
+        !notes ||
+        !relation
+    ) {
+        alert("יש למלא את כל השדות לפני השליחה");
+        return;
+    }
+
+    const inviteData = {
+        className,
+        soldierName,
+        inviteId,
+        inviteName,
+        notes,
+        relation,
+        createdAt: Date.now()
+    };
+
+    try {
+
+        await push(
+            ref(db, "invites"),
+            inviteData
+        );
+
+        showPopup();
+
+        form.reset();
+
+    } catch (error) {
+
+        console.error(error);
+        alert("שגיאה בשמירת הנתונים");
+
+    }
+
+});
+</script>
+<script>
+  
+function goToMenu() {
+    window.location.href = "menu.html";
+}
+
+/* =========================
+   SUBMIT + POPUP
+========================= */
+
+function showPopup() {
+
+    const overlay = document.getElementById("overlay");
+    const popup = document.getElementById("successPopup");
+
+    overlay.style.display = "block";
+    popup.style.display = "block";
+
+    setTimeout(() => {
+        overlay.style.display = "none";
+        popup.style.display = "none";
+    }, 2500);
+}
+</script>
+<style>
+    body {
+    margin: 0;
+    min-height: 100vh;
+    background-image: url("assets/background/sandBg.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    direction: ltr;
+    font-family: "secular";
+}
+   .title{
+    top: 15%;
+   }
+   .forword {
+    cursor: pointer;
+    position: absolute;
+    top: 85%;
+    left: 22%;
+    transform: translateX(-50%);
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    touch-action: manipulation;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.forword:hover {
+    transform: translateX(-50%) scale(1.1);
+    filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.8));
+}
+
+.forword:active {
+    transform: translateX(-50%) scale(0.95);
+}
+</style>
+</body>
+</html>

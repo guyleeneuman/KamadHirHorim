@@ -1,0 +1,626 @@
+body {
+    margin: 0;
+    min-height: 100vh;
+    background-image: url("assets/background/openBg.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    direction: ltr;
+    font-family: "secular";
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+@font-face {
+    font-family: "secular";
+    src: url("assets/fonts/Lunasima-Regular.ttf");
+}
+.navbar {
+    position: absolute;
+    top: 7%;
+    left: 50%;
+    width: 95%;
+    transform: translate(-50%, -50%);
+}
+
+.title {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    /* width: 45vw; */
+    transform: translate(-50%, -50%);
+}
+.box {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    width: 95vw;
+    transform: translate(-50%);
+}
+
+.byGuylee{
+    position: absolute;
+    left: 50%;
+    top: 95%;
+    width: 90vw;
+    transform: translate(-50%, -50%);
+    z-index: 1000000;
+}
+
+
+
+.toInstructions {
+    cursor: pointer;
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    touch-action: manipulation;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.toInstructions:hover {
+    transform: translateX(-50%) scale(1.1);
+    filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.8));
+}
+
+.toInstructions:active {
+    transform: translateX(-50%) scale(0.95);
+}
+
+.toTofes {
+    cursor: pointer;
+    position: absolute;
+    top: 62%;
+    left: 50%;
+    transform: translateX(-50%);
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    touch-action: manipulation;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.toTofes:hover {
+    transform: translateX(-50%) scale(1.1);
+    filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.8));
+}
+
+.toTofes:active {
+    transform: translateX(-50%) scale(0.95);
+}
+
+
+.toForm {
+    cursor: pointer;
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    transform: translateX(-50%);
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    touch-action: manipulation;
+    z-index: 1000000000;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.toForm:hover {
+    transform: translateX(-50%) scale(1.1);
+    filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.8));
+}
+
+.toForm:active {
+    transform: translateX(-50%) scale(0.95);
+}
+
+.goBack {
+  cursor: pointer;
+    position: absolute;
+    top: 15%;
+    left: 0;
+    z-index: 1000000;
+    transform: translateY(-50%);
+
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    touch-action: manipulation;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.goBack:hover {
+    transform: translateY(-50%) scale(1.1); /* 👈 שמרנו על Y */
+    filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.8));
+}
+
+.goBack:active {
+    transform: translateY(-50%) scale(0.95);
+}
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    display: none;
+    z-index: 9999;
+}
+
+#popup {
+    display: none;
+}
+
+.pillForm {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: "secular";
+    width: 80vw; /* 👈 זה הפתרון */
+    width: min(500px, 90vw);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+}
+
+/* כל השדות נראים כמו כפתורים */
+.pillForm input,
+.pillForm textarea{
+    width: calc(50% - 8px);
+    padding: 10px 5px;
+    
+    box-sizing: border-box; /* 🔥 קריטי */
+
+    border-radius: 50px;
+    border: none;
+    outline: none;
+     direction: rtl;
+    background: #7a000086;
+    color: #FFFCE9;
+
+    text-align: center;
+    font-size: 1.2rem;
+    font-family: "secular";
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* textarea קצת יותר גבוה */
+.pillForm textarea {
+    height: 110px;
+    border-radius: 20px;
+    resize: none;
+    font-family: "secular";
+    direction: rtl;
+}
+
+/* placeholder */
+.pillForm input::placeholder,
+.pillForm textarea::placeholder {
+    color: #FFFCE9;
+    opacity: 0.8;
+}
+
+/* כפתור שליחה
+.pillForm button {
+    background: #FFFCE9;
+    color: #6B749E;
+    cursor: pointer;
+    font-weight: bold;
+} */
+
+
+/* כותרת כמו pill */
+.pillLabel {
+    width: 40vw;
+    padding: 12px;
+
+    border-radius: 50px;
+
+    background: #7a000086;
+    color: #FFFCE9;
+
+    text-align: center;
+    font-size: 1.2rem;
+
+    box-sizing: border-box;
+}
+
+/* אזור תמונות */
+.imageSelector {
+    width: 40vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* כל תמונה */
+.imageSelector label {
+    cursor: pointer;
+}
+
+/* מסתיר radio */
+.imageSelector input {
+    display: none;
+}
+
+/* עיצוב תמונה */
+.imageSelector img {
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    transition: 0.2s;
+}
+
+/* כשהתמונה נבחרת */
+.imageSelector input:checked + img {
+    outline: 3px solid #FFFCE9;
+    transform: scale(1.1);
+}
+
+.dropdown {
+  width: calc(50% - 8px);
+  position: relative;
+}
+
+/* כמו שאר השדות */
+.dropdownSelected {
+  width: 100%;
+  padding: 12px 20px;
+
+  border-radius: 50px;
+  box-sizing: border-box;
+
+  background: #7a000086;
+  color: #FFFCE9;
+
+  text-align: center;
+  font-size: 1.2rem;
+
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* רשימה */
+.dropdownList {
+  display: none;
+  position: absolute;
+  top: 110%;
+  left: 0;
+
+  width: 100%;
+  background: rgba(255, 252, 233, 0.95);
+
+  border-radius: 20px;
+  overflow: hidden;
+  z-index: 10;
+}
+
+/* פריט */
+.dropdownItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* 👈 טקסט שמאל, תמונה ימין */
+  flex-direction: row-reverse;     /* 👈 תמונה תמיד ימין */
+
+  padding: 10px 15px;
+  cursor: pointer;
+
+  color: #7a000086;
+  font-weight: bold;
+}
+
+/* hover כחול */
+.dropdownItem:hover {
+  background: #7a0000;
+  color: #FFFCE9;
+}
+
+/* תמונה */
+.dropdownItem img {
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+}
+
+/* בלי תמונה ל"אחר" */
+.dropdownItem.noImg {
+  justify-content: center;
+}
+.dropdownItem.noImg img {
+  display: none;
+}
+
+.submitBtn {
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+
+    position: relative;
+    width: fit-content;
+}
+
+
+.submitBtn img {
+    width: 180px; /* תשני לפי העיצוב שלך */
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.submitBtn:hover img {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.8));
+}
+
+.submitBtn:active img {
+    transform: scale(0.95);
+}
+
+.halfInput {
+    width: calc(50% - 8px);
+    padding: 16px 20px; /* כמו השאר */
+    
+    box-sizing: border-box;
+
+    border-radius: 50px;
+    border: none;
+    outline: none;
+
+    direction: rtl;
+    background: #7a000086;
+    color: #FFFCE9;
+
+    text-align: center;
+    font-size: 1.3rem;
+    font-family: "secular";
+
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* רקע מוחשך */
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0,0,0,0.6);
+
+    display: none;
+    z-index: 9998;
+}
+
+/* הפופאפ */
+#successPopup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+
+    display: none;
+
+    z-index: 9999;
+
+    animation: popIn 0.3s ease forwards;
+}
+
+#successPopup img {
+    width: 250px; /* תשני לפי עיצוב */
+}
+
+/* אנימציה קטנה */
+@keyframes popIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.6);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+.searchBox {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translateX(-50%); /* רק יישור אופקי */
+
+  width: 80%;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+
+/* שדה חיפוש - לא נוגעים בעיצוב שלך */
+.searchInput{
+  width: 100%;
+  height: 50px;
+  font-size: 1.3rem;
+  border: none;
+  border-radius: 30px;
+  padding-left: 45px; /* מקום לאייקון */
+  font-family: "secular";
+  color: #7a0000;
+  text-align: center;
+
+  background-color: #fffce9a9;
+  fill: #7a0000;
+}
+
+/* placeholder */
+.searchInput::placeholder{
+  color: #7a0000fd;
+}
+
+/* כפתור חיפוש בצד שמאל */
+#searchBtn{
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+    fill: #7a0000af;
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* ===== רשימה מתחת לחיפוש ===== */
+#ordersContainer {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 80vw;
+  display: flex;
+  flex-direction: column; /* 🔥 זה עושה רשימה */
+  align-items: center;
+}
+
+
+/* כרטיס */
+.inviteCard{
+
+  top: 35%;
+  
+  width: 70vw;
+  max-width: 420px;
+
+  background: #7a000086;
+  color: #FFFCE9;
+  border-radius: 18px;
+
+  padding: 12px 16px;
+
+  margin: 12px auto;   /* זה מרכז את הכרטיס */
+
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+
+  direction: rtl; /* חשוב לסדר ימין לשמאל */
+}
+
+
+.inviteName{
+    font-size:24px;
+    font-weight:bold;
+}
+
+.inviteId{
+    margin-top:8px;
+    color:#FFFCE9;
+}
+
+.soldierName{
+    margin-top:15px;
+    font-size:20px;
+}
+
+.topRow{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.inviteName{
+  text-align: right;
+}
+
+.bottomRow{
+  font-size: 1rem;
+  color:#FFFCE9;
+  text-align: right;
+
+}
+
+.inviteCard {
+  position: relative;
+}
+
+.deleteBtn {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+
+  cursor: pointer;
+
+  background: rgba(255,255,255,0.2);
+  color: white;
+
+  width: 28px;
+  height: 28px;
+
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.deleteBtn:hover {
+  transform: scale(1.1);
+  background: rgba(255,255,255,0.4);
+}
+
+.inviteCard {
+  position: relative;
+  transition: 0.3s;
+}
+
+.inviteCard.checked {
+  opacity: 0.6;
+}
+
+.inviteCard.checked .topRow {
+  text-decoration: line-through;
+}
+
+/* כפתור הסימון */
+.checkBtn {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+
+  width: 28px;
+  height: 28px;
+
+  border-radius: 50%;
+  border: none;
+
+  cursor: pointer;
+
+  background: #fffce9;
+  color: #7a0000;
+
+  font-weight: bold;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: 0.2s;
+}
+
+.checkBtn:hover {
+  transform: scale(1.1);
+}

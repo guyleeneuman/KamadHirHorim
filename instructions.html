@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>טקס סיום קמ"ד ח"יר- טופס רישום</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+  <img class="navbar" src="assets/elements/logos.png">
+  <img class="title" src="assets/titles/details.png">
+  <img class="byGuylee"  src="assets/elements/byGuylee.png">
+  <div class="details">24.06.2026 ט' בתמוז תשפ"ו <br> יום רביעי, בשעה 17:00 <br> כניסת הורים החל מ15:30</div>
+      <div class="toInstructions" onclick="backHome()">
+    <img src="assets/buttons/backHome.png" alt="start button">
+    </div>
+
+<script>
+function backHome() {
+    window.location.href = "index.html";
+}
+function toTofes() {
+    window.location.href = "tofes.html";
+}
+</script>
+<style>
+        body {
+    margin: 0;
+    min-height: 100vh;
+    background-image: url("assets/background/sandBg.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    direction: ltr;
+    font-family: "secular";
+}
+.title{
+    width: 65vw;
+    top: 20%;
+}
+.details{
+    position: absolute;
+    top: 50%;
+    font-weight: 600;
+        left: 50%;
+     width: 100vw; 
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 1.6rem;
+    color: #7a0000;
+}
+</style>
+</body>
+
+</html>
