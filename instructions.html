@@ -17,6 +17,11 @@
     <img src="assets/buttons/backHome.png" alt="start button">
     </div>
 
+    <div class="galleryContainer">
+    <div class="gallery" id="gallery"></div>
+</div>
+<div class="ins">גללו בכדי לראות את התמונות מהקמ"ד</div>
+
 <script>
 function backHome() {
     window.location.href = "index.html";
@@ -37,21 +42,91 @@ function toTofes() {
     font-family: "secular";
 }
 .title{
-    width: 65vw;
+    width: 50vw;
     top: 20%;
 }
 .details{
     position: absolute;
-    top: 50%;
+    top: 37%;
     font-weight: 600;
         left: 50%;
      width: 100vw; 
     transform: translate(-50%, -50%);
     text-align: center;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     color: #7a0000;
+}
+.ins {
+    position: absolute;
+    direction: rtl;
+    top: 57%;
+    left: 50%;
+    font-size: 1rem;
+    text-align: center;
+    width: 100vw;
+    transform: translate(-50%, -50%);
 }
 </style>
 </body>
+<script>
+const allImages = [
+    "assets/gallery/1.jpeg",
+    "assets/gallery/2.jpeg",
+    "assets/gallery/3.jpeg",
+    "assets/gallery/4.jpeg",
+    "assets/gallery/5.jpeg",
+    "assets/gallery/6.jpeg",
+    "assets/gallery/7.jpeg",
+    "assets/gallery/8.jpeg",
+    "assets/gallery/9.jpeg",
+    "assets/gallery/10.jpeg",
+    "assets/gallery/11.jpeg",
+    "assets/gallery/12.jpeg",
+    "assets/gallery/13.jpeg",
+    "assets/gallery/14.jpeg",
+    "assets/gallery/15.jpeg",
+    "assets/gallery/16.jpeg",
+    "assets/gallery/17.jpeg",
+    "assets/gallery/18.jpeg",
+    "assets/gallery/19.jpeg",
+    "assets/gallery/20.jpeg",
+    "assets/gallery/21.jpeg",
+    "assets/gallery/22.jpeg",
+    "assets/gallery/23.jpeg",
+    "assets/gallery/24.jpeg",
+    "assets/gallery/25.jpeg",
+    "assets/gallery/26.jpeg",
+    "assets/gallery/27.jpeg",
+    "assets/gallery/28.jpeg",
+    "assets/gallery/29.jpeg",
+    "assets/gallery/30.jpeg",
+    "assets/gallery/31.jpeg",
+    "assets/gallery/32.jpeg",
+    "assets/gallery/33.jpeg",
+    "assets/gallery/34.jpeg",
+    "assets/gallery/35.jpeg",
+];
 
+function shuffle(array) {
+    return [...array].sort(() => Math.random() - 0.5);
+}
+
+function createGallery() {
+
+    const gallery = document.getElementById("gallery");
+
+    const randomImages = shuffle(allImages);
+
+    randomImages.forEach(src => {
+
+        const img = document.createElement("img");
+
+        img.src = src;
+
+        gallery.appendChild(img);
+    });
+}
+
+createGallery();
+</script>
 </html>

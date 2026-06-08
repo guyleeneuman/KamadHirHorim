@@ -624,3 +624,48 @@ html, body {
 .checkBtn:hover {
   transform: scale(1.1);
 }
+
+.galleryContainer{
+    position: absolute;
+    bottom: 23%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 95vw;
+    overflow: hidden;
+}
+
+.gallery{
+    display: flex;
+    gap: 10px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+
+    padding-bottom: 10px;
+}
+
+.gallery::-webkit-scrollbar{
+    height: 6px;
+}
+
+.gallery::-webkit-scrollbar-thumb{
+    background: #7a0000;
+    border-radius: 10px;
+}
+
+.gallery img{
+    width: 120px;
+    height: 80px;
+
+    object-fit: cover;
+
+    border-radius: 12px;
+
+    flex-shrink: 0;
+
+    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+}
