@@ -173,23 +173,39 @@ html, body {
 
 /* כל השדות נראים כמו כפתורים */
 .pillForm input,
-.pillForm textarea{
+.pillForm textarea,
+.pillForm select {
     width: calc(50% - 8px);
     padding: 10px 5px;
-    
-    box-sizing: border-box; /* 🔥 קריטי */
+
+    box-sizing: border-box;
 
     border-radius: 50px;
     border: none;
     outline: none;
-     direction: rtl;
+
+    direction: rtl;
     background: #7a000086;
     color: #FFFCE9;
 
     text-align: center;
     font-size: 1.2rem;
     font-family: "secular";
+
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+}
+
+.pillForm select option {
+    color: #7a0000;
+    background: #FFFCE9;
+        border-radius: 50px;
+    border: none;
+    outline: none;
+
 }
 
 /* textarea קצת יותר גבוה */
@@ -215,6 +231,7 @@ html, body {
     cursor: pointer;
     font-weight: bold;
 } */
+
 
 
 /* כותרת כמו pill */
@@ -658,8 +675,8 @@ html, body {
 }
 
 .gallery img{
-    width: 120px;
-    height: 80px;
+    width: 150px;
+    height: 100px;
 
     object-fit: cover;
 

@@ -96,10 +96,27 @@ function render(list) {
               כיתה: ${invite.className || ""} 
               
             </div>
-            <div class="bottomRow">
-               קרבה: ${invite.relation || ""} |
-              הערות: ${invite.notes || "אין"}
-            </div>
+           <div class="bottomRow">
+  קרבה: ${invite.relation || ""} |
+  הערות: ${invite.notes || "אין"}
+ ${invite.weapon === "כן"
+    ? ` | <img 
+        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAACH0lEQVR4nO2XTUtVURSGn5sWOlBrIjTxCoGQSIOMhBxE0G/wK7IgjGriqH6BIBgZKFI00UlBNBJHBU78iOg6cBhRZFpCiihoRCre2PAGh7hX17HOcUv7gQv7nP0u1rsu+2MdCAQCgUAgWaaBvH45oPqweJiOBPn+m9ytkEIBE/oXcgdoeqKIhz0L8Z18KMTI5H7X9GEqxK3zf0U+LC3PyP93hQwB9fhFNTBjvUeim/UHcC1msgzQCbwCvqdwSe5KFhgEdoAt4Dw2SoEXCZvP7affG1TwmFHfLf0ysKBxcwFdv+YekBJZJVwz6t9I3wIMa3y3wNKb11wTKXFSCTeM+hXpTwAXNV4HWlWA44Lez0XeJU6Xkk4Z9evSV+n5fmRtu7Hj4R/PiVMGfFTS68aYd9Kfjby7CswCt4Ajkb1jPUD+mh4l/AAcM8Y8UsxAkflmzX9Ka1k1AD91/F7aQ+sMjcc8QvvSKCIDvFbCxwb96ZhFLAF1KdRBpxJ+ASoN+jvSP8MjyoGvMnbFGPP7JncnnDfckKm3xs2Y0S3uYk7hEbMy1W7Un5H+Mx5RJ1PfgKMxe6sRPOK2TD2NETOqmLitfqI8lym3TyyUAKuKqcEjcjFbh3ORm98r5mSs1qi/J/0TPGNDxiqM+pfSd+AZ7yNtSVadaiFci96mT2D3TX4cz7gMbMbsm3rxlEadXovAdhHzazoYbqb5hRcIBAKBAAnyC9H9WrdnfsWHAAAAAElFTkSuQmCC"
+        alt="weapon"
+        style="height:16px; vertical-align:middle; filter: brightness(0) saturate(100%);">
+      יש נשק`
+    : ""}
+  ${invite.disabledPass === "כן"
+    ? ` | <svg xmlns="http://www.w3.org/2000/svg"
+          height="16px"
+          viewBox="0 -960 960 960"
+          width="16px"
+          fill="black"
+          style="vertical-align: middle;">
+          <path d="M423.5-743.5Q400-767 400-800t23.5-56.5Q447-880 480-880t56.5 23.5Q560-833 560-800t-23.5 56.5Q513-720 480-720t-56.5-23.5ZM680-80v-200H480q-33 0-56.5-23.5T400-360v-240q0-33 23.5-56.5T480-680q24 0 41.5 10.5T559-636q55 66 99.5 90.5T760-520v80q-53 0-107-23t-93-55v138h120q33 0 56.5 23.5T760-300v220h-80Zm-280 0q-83 0-141.5-58.5T200-280q0-72 45.5-127T360-476v82q-35 14-57.5 44.5T280-280q0 50 35 85t85 35q39 0 69.5-22.5T514-240h82q-14 69-69 114.5T400-80Z"/>
+        </svg> יש תו נכה`
+    : ""}
+</div>
 
           </div>
         `;

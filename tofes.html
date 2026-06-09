@@ -18,9 +18,18 @@
 <input type="number" name="number_invite" placeholder="ת.ז אורח">
 
 <input type="text" name="invite_name" placeholder="שם מלא אורח">
+<select name="weapon" required>
+    <option value="" disabled selected>נשק:כן/לא</option>
+    <option value="כן">כן</option>
+    <option value="לא">לא</option>
+</select>
 
-<textarea name="notes" placeholder="הערות:
-נשק/תו נכה"></textarea>
+<select name="disabled_pass" required>
+    <option value="" disabled selected>תו נכה:כן/לא</option>
+    <option value="כן">כן</option>
+    <option value="לא">לא</option>
+</select>
+<textarea name="notes" placeholder="הערות:"></textarea>
 
 <textarea name="details" placeholder="קרבה לחיילת:
 אמא/אבא/אחר"></textarea>
@@ -81,29 +90,35 @@ form.addEventListener("submit", async (e) => {
     const inviteName = form.elements["invite_name"].value.trim();
     const notes = form.elements["notes"].value.trim();
     const relation = form.elements["details"].value.trim();
+    const weapon = form.elements["weapon"].value;
+    const disabledPass = form.elements["disabled_pass"].value;
 
     // בדיקה אם משהו ריק
     if (
-        !className ||
-        !soldierName ||
-        !inviteId ||
-        !inviteName ||
-        !notes ||
-        !relation
-    ) {
-        alert("יש למלא את כל השדות לפני השליחה");
-        return;
-    }
+    !className ||
+    !soldierName ||
+    !inviteId ||
+    !inviteName ||
+    !notes ||
+    !relation ||
+    !weapon ||
+    !disabledPass
+) {
+    alert("יש למלא את כל השדות לפני השליחה");
+    return;
+}
 
     const inviteData = {
-        className,
-        soldierName,
-        inviteId,
-        inviteName,
-        notes,
-        relation,
-        createdAt: Date.now()
-    };
+    className,
+    soldierName,
+    inviteId,
+    inviteName,
+    notes,
+    relation,
+    weapon,
+    disabledPass,
+    createdAt: Date.now()
+};
 
     try {
 

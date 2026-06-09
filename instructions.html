@@ -12,15 +12,22 @@
   <img class="navbar" src="assets/elements/logos.png">
   <img class="title" src="assets/titles/details.png">
   <img class="byGuylee"  src="assets/elements/byGuylee.png">
-  <div class="details">24.06.2026 ט' בתמוז תשפ"ו <br> יום רביעי, בשעה 17:00 <br> כניסת הורים החל מ15:30</div>
-      <div class="toInstructions" onclick="backHome()">
+<div class="details">מחנה צור, ביסל"ח 17 <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M536.5-503.5Q560-527 560-560t-23.5-56.5Q513-640 480-640t-56.5 23.5Q400-593 400-560t23.5 56.5Q447-480 480-480t56.5-23.5ZM480-186q122-112 181-203.5T720-552q0-109-69.5-178.5T480-800q-101 0-170.5 69.5T240-552q0 71 59 162.5T480-186Zm0 106Q319-217 239.5-334.5T160-552q0-150 96.5-239T480-880q127 0 223.5 89T800-552q0 100-79.5 217.5T480-80Zm0-480Z"/></svg><br>
+  24.06.2026 ט' בתמוז תשפ"ו
+  <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="40">
+    <path d="M200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-80h80v80h320v-80h80v80h40q33 0 56.5 23.5T840-720v560q0 33-23.5 56.5T760-80H200Zm0-80h560v-400H200v400Zm0-480h560v-80H200v80Zm0 0v-80 80Z"/>
+  </svg>
+  <br>יום רביעי ב17:000, כניסת הורים החל מ15:30<svg class="icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M360-840v-80h240v80H360Zm80 440h80v-240h-80v240Zm-99.5 291.5Q275-137 226-186t-77.5-114.5Q120-366 120-440t28.5-139.5Q177-645 226-694t114.5-77.5Q406-800 480-800q62 0 119 20t107 58l56-56 56 56-56 56q38 50 58 107t20 119q0 74-28.5 139.5T734-186q-49 49-114.5 77.5T480-80q-74 0-139.5-28.5ZM678-242q82-82 82-198t-82-198q-82-82-198-82t-198 82q-82 82-82 198t82 198q82 82 198 82t198-82ZM480-440Z"/></svg>
+</div>      
+
+<div class="toInstructions" onclick="backHome()">
     <img src="assets/buttons/backHome.png" alt="start button">
     </div>
 
     <div class="galleryContainer">
     <div class="gallery" id="gallery"></div>
 </div>
-<div class="ins">גללו בכדי לראות את התמונות מהקמ"ד</div>
+<div class="inst">גללו בכדי לראות את התמונות מהקמ"ד</div>
 
 <script>
 function backHome() {
@@ -31,7 +38,7 @@ function toTofes() {
 }
 </script>
 <style>
-        body {
+    body {
     margin: 0;
     min-height: 100vh;
     background-image: url("assets/background/sandBg.png");
@@ -45,25 +52,33 @@ function toTofes() {
     width: 50vw;
     top: 20%;
 }
+
+
 .details{
     position: absolute;
     top: 37%;
-    font-weight: 600;
-        left: 50%;
+    font-weight: 500;
+    left: 50%;
      width: 100vw; 
     transform: translate(-50%, -50%);
     text-align: center;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     color: #7a0000;
 }
-.ins {
+
+.details .icon {
+  fill: currentColor;
+  transform: translateY(3px);
+}
+.inst {
     position: absolute;
     direction: rtl;
-    top: 57%;
+    top: 59%;
     left: 50%;
     font-size: 1rem;
-    text-align: center;
+    text-align: right;
     width: 100vw;
+    color: rgba(0, 0, 0, 0.62);
     transform: translate(-50%, -50%);
 }
 </style>
