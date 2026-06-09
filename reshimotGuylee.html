@@ -20,6 +20,8 @@
 
 </div>
 <div id="ordersContainer"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<button id="exportBtn">הורד אקסל</button>
 <script type="module">
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
@@ -125,6 +127,36 @@ window.deleteInvite = async function(id) {
     loadInvites(); // רענון הרשימה
 }
 
+const exportBtn = document.getElementById("exportBtn");
+
+exportBtn.addEventListener("click", exportToExcel);
+
+function exportToExcel() {
+
+    // ממפים את הנתונים לפורמט של טבלה
+    const data = allInvites.map(invite => ({
+        "שם אורח": invite.inviteName || "",
+        "תז": invite.inviteId || "",
+        "שם חניכה": invite.soldierName || "",
+        "כיתה": invite.className || "",
+        "קרבה": invite.relation || "",
+        "הערות": invite.notes || "",
+        "נשק": invite.weapon || "",
+        "תו נכה": invite.disabledPass || "",
+        "מסומן": invite.checked ? "כן" : "לא"
+    }));
+
+    // יוצרים גיליון
+    const worksheet = XLSX.utils.json_to_sheet(data);
+
+    // יוצרים קובץ אקסל
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Invites");
+
+    // הורדה
+    XLSX.writeFile(workbook, "invites.xlsx");
+}
+
 </script>
 
 <style>
@@ -160,6 +192,37 @@ window.deleteInvite = async function(id) {
 
 .forword:active {
     transform: translateX(-50%) scale(0.95);
+}
+#exportBtn {
+    position: absolute;
+    top: 2%;
+    left: 050%;
+    transform: translateX(-50%);
+
+    padding: 10px 18px;
+    border: none;
+    border-radius: 12px;
+
+    background: linear-gradient(135deg, #2f5d50, #4c8c7a);
+    color: white;
+
+    font-size: 14px;
+    font-family: "secular";
+
+    cursor: pointer;
+
+    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+
+    transition: all 0.25s ease;
+}
+
+.exportBtn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+}
+
+.exportBtn:active {
+    transform: scale(0.95);
 }
 </style>
 </body>
