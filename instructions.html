@@ -11,7 +11,7 @@
 
   <img class="navbar" src="assets/elements/logos.png">
   <img class="title" src="assets/titles/details.png">
-  <img class="byGuylee"  src="assets/elements/byGuylee.png">
+  <!-- <img class="byGuylee"  src="assets/elements/byGuylee.png"> -->
 <div class="details">מחנה צור, ביסל"ח 17 <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M536.5-503.5Q560-527 560-560t-23.5-56.5Q513-640 480-640t-56.5 23.5Q400-593 400-560t23.5 56.5Q447-480 480-480t56.5-23.5ZM480-186q122-112 181-203.5T720-552q0-109-69.5-178.5T480-800q-101 0-170.5 69.5T240-552q0 71 59 162.5T480-186Zm0 106Q319-217 239.5-334.5T160-552q0-150 96.5-239T480-880q127 0 223.5 89T800-552q0 100-79.5 217.5T480-80Zm0-480Z"/></svg><br>
   24.06.2026 ט' בתמוז תשפ"ו
   <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="40">
@@ -22,19 +22,26 @@
 </div>      
 <div class="instr2">
 
- <br>:הנחיות
-<br>אין לצלם אמצעי לחימה בבסיס<br>אין להסתובב לא ברחבת הטקס<br>אין להכנס עם נשק ללא תעודה /חוגר/אישור<br>אין כניסה לרכב ללא תו נכה<br>לא תנתן כניסה לבסיס לפני השעה 15:30<br>יוגש כיבוד קל ושתייה<br>במקום קיימים שירותים ושירותי נכים
+ <br>הנחיות:
+<br>1) כניסה עם נשק אישי בהצגת רשיון בלבד.<br> 2) כניזה עם נשק צבאי בהצגת חוגר ובמצב "לבן" -פרוק. <br>3) בכל אירוע פעילות חבלנית עוינת, תפעול ע"ב כינת כוננות וכח סדרנות במקרה הצורך.<br> 4) בעת חירום, יש לפנות את המקום דרך היציאות: ש.ג ראשי או אחורי (אכזריות).<br>5) בעת השמע אזעקה יש לשכב על הרצפה ולשים ידיים על הראש או להשתמש במרחבים המוגנים  בסמוך לטקס (תופץ רשימה של המרחבים הללו).<br>6) יש להשמע להוראות אנשי הבטחון והדרנים.<br>7) אין לעבור גדרות או מכשולים קיימים, השתמש בכניות וביציאות המסומנות.<br>8) יש לשמור על מעברים פנויים בין הגושים במהלך כל האירוע.<br>9) אין להסתובב במרחבים לא מוכרים ברחבי הבסיס.<br>10) אין לצלם ברחבי הבסיס- כל צילום יכול לשרת את האויב.<br>11) שמור על נקיון המקום!
 </div>
 
 <div class="toInstructions" onclick="backHome()">
     <img src="assets/buttons/backHome.png" alt="start button">
     </div>
-
+   <div class="toTofes" id="toTofesBtn" onclick="toTofes()">
+    <img src="assets/buttons/toTofes.png" alt="start button">
+</div>
     <div class="galleryContainer">
     <div class="gallery" id="gallery"></div>
 </div>
 <div class="inst">גללו בכדי לראות את התמונות מהקמ"ד</div>
-
+<div class="agreementContainer">
+    <label class="agreementLabel">
+        <input type="checkbox" id="agreementCheckbox">
+        קראתי והבנתי את ההנחיות ואני מתחייב/ת לפעול על פיהן.
+    </label>
+</div>
 <script>
 function backHome() {
     window.location.href = "index.html";
@@ -50,7 +57,7 @@ function toTofes() {
     background-image: url("assets/background/sandBg.png");
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
+    background-repeat:repeat-y;
     direction: ltr;
     font-family: "secular";
 }
@@ -62,7 +69,7 @@ function toTofes() {
 
 .details{
     position: absolute;
-    top: 27%;
+    top: 35%;
     font-weight: 500;
     left: 50%;
      width: 100vw; 
@@ -80,27 +87,78 @@ function toTofes() {
 .inst {
     position: absolute;
     direction: rtl;
-    top: 59%;
+    top: 132%;
     left: 50%;
     font-size: 1rem;
     text-align: right;
-    width: 100vw;
+    width: 90vw;
     color: rgba(0, 0, 0, 0.62);
     transform: translate(-50%, -50%);
     
 }
 .instr2 {
     position: absolute;
-    top: 50%;
-    font-weight: 500;
+    top: 85%;
+    font-weight: 400;
     left: 50%;
-     width: 100vw; 
+     width: 80vw; 
     transform: translate(-50%, -50%);
     text-align: center;
     font-size: 1rem;
     color: #7a0000;
     /* direction: rtl; */
     font-weight: 600;
+    direction: rtl;
+    text-align: right;
+   
+}
+
+.toInstructions{
+    top: 190%;
+}
+
+.toTofes{
+    top: 170%;
+}
+
+.agreementContainer {
+    position: absolute;
+    top: 160%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90vw;
+    direction: rtl;
+    text-align: right;
+    color: #7a0000;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.agreementLabel {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    line-height: 1.5;
+}
+
+.agreementLabel input[type="checkbox"] {
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+    accent-color: #7a0000;
+    flex-shrink: 0;
+}
+
+.toTofes {
+    top: 170%;
+    opacity: 0.5;
+    pointer-events: none;
+    transition: 0.3s;
+}
+
+.toTofes.active {
+    opacity: 1;
+    pointer-events: auto;
 }
 </style>
 </body>
@@ -162,6 +220,27 @@ function createGallery() {
         gallery.appendChild(img);
     });
 }
+
+function backHome() {
+    window.location.href = "index.html";
+}
+
+function toTofes() {
+    if (document.getElementById("agreementCheckbox").checked) {
+        window.location.href = "tofes.html";
+    }
+}
+
+const checkbox = document.getElementById("agreementCheckbox");
+const tofesBtn = document.getElementById("toTofesBtn");
+
+checkbox.addEventListener("change", function () {
+    if (this.checked) {
+        tofesBtn.classList.add("active");
+    } else {
+        tofesBtn.classList.remove("active");
+    }
+});
 
 createGallery();
 </script>

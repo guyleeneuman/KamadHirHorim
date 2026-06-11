@@ -57,7 +57,7 @@ html, body {
 .toInstructions {
     cursor: pointer;
     position: absolute;
-    top: 80%;
+    top: 65%;
     left: 50%;
     transform: translateX(-50%);
     -webkit-tap-highlight-color: transparent;
@@ -100,7 +100,7 @@ html, body {
 .toForm {
     cursor: pointer;
     position: absolute;
-    top: 75%;
+    top: 145%;
     left: 50%;
     transform: translateX(-50%);
     -webkit-tap-highlight-color: transparent;
@@ -645,7 +645,7 @@ html, body {
 
 .galleryContainer{
     position: absolute;
-    bottom: 23%;
+    top: 135%;
     left: 50%;
     transform: translateX(-50%);
 
